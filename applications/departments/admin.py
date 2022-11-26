@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Department
 
-# Register your models here.
+# 'Department' model registration in django admin panel
+admin.site.register(Department)
