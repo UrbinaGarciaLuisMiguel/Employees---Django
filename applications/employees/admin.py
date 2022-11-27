@@ -16,8 +16,9 @@ class EmployeAdmin(admin.ModelAdmin):
     # Filter for 'skills' (works on many-to-many relationships)
     filter_horizontal = ('skills',)
 
-    # Extra column in administrator panel that is not in the 'Employees' model defined
-    def full_name(self, obj):
-        return obj.first_name + ' ' + obj.last_name
+    # # Extra column in administrator panel that is not in the 'Employees' model defined
+    # # If it doesn't exist in your model
+    # def full_name(self, obj):
+    #     return obj.first_name + ' ' + obj.last_name
 
 admin.site.register(Employee, EmployeAdmin)

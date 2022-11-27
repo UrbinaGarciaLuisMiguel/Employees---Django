@@ -1,0 +1,10 @@
+<h1>ACTUALIZAR EMPLEADO</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    <!-- as_p is one of many methods of the form object. I could have
+         employee simply 'form' but it would show me the fields inline  -->
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+</form>
