@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView, DeleteView
 from .models import Employee
 from django.urls import reverse_lazy
+from .forms import EmployeeForm
 
 
 """ List all the employees of the company """
@@ -69,13 +70,20 @@ class CreateSuccess(TemplateView):
 class EmployeeCreate(CreateView):
     template_name = 'employees/create.html'
     model         = Employee
+    
     # Extra field queredio in the 'CreateView', referred to the model attributes
     # fields        = ('__all__')
-    fields = ["first_name","last_name","job","department","skills"] # The 'fields' decorator handles a default variable
-                                                                    # called 'form' referring to the fields indicated in 
-                                                                    # its declaration. it can be accessed in the .html 
-                                                                    # template
+    # fields = ["first_name","last_name","job","department","skills"] # The 'fields' decorator handles a default variable
+    #                                                                 # called 'form' referring to the fields indicated in 
+    #                                                                 # its declaration. it can be accessed in the .html 
+    #                                                                 # template
+    
 
+    # If I use 'ModelForm' to be able to manipulate the fields of the form, 
+    # it is allowed to replace 'fields' with 'form_call'
+    form_class =  EmployeeForm
+    
+    
     # I must indicate which URL to go to when the request is successfully completed
     # success_url = '/employees/success' # Redirect to the same page
     success_url   = reverse_lazy('employee_app:employee_success') 

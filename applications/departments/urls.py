@@ -16,5 +16,7 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
+    path('crear/', views.DepartmentCreate.as_view(), name = 'department_create'),
 ]
