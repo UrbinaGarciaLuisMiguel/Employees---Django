@@ -3,10 +3,10 @@
     <!-- Menú de barra de navegación  -->
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">Empleados</li>
+        <li><a class="menu-text" href="{% url 'index' %}">Empleados</a></li>
         <li><a href="{% url 'employee_app:employees_all' %}">Listar</a></li>
         <li><a href="{% url 'department_app:department_all' %}">Departamentos</a></li>
-        <li><a href="#">Administrar</a></li>
+        <li><a href="{% url 'employee_app:employees_all_admin' %}">Administrar</a></li>
       </ul>
     </div>
     

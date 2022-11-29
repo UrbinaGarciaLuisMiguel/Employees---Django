@@ -12,19 +12,7 @@
 
     <div class = "grid-container">
         <div class = "grid-x">
-            <h1 class = "cell">LISTA DE EMPLEADOS</h1>
-
-            <!-- start of employee finder -->
-            <form method = "GET" class = "cell grid-x grid-margin-x">
-                {% csrf_token %}
-                <div class = "cell large-7">
-                    <input type="text" id = "keyword_id" name = "keyword" placeholder="Buscar empleado">
-                </div>
-                <div class = "cell large-2">
-                    <button type = "submit" class = "success button">Buscar</button>
-                </div>
-            </form>
-            <!-- end of employee finder -->
+            <h1 class = "cell">ADMINISTRAR EMPLEADOS</h1>
 
             <!-- start of list table -->
             <div class="cell">
@@ -46,7 +34,12 @@
                             <td>{{ employee.first_name }}</td>
                             <td>{{ employee.last_name }}</td>
                             <td>{{ employee.department.name }}</td>
-                            <td><a style="margin-right: 5px;" href = "{% url 'employee_app:employee_detail' employee.id %}" class ="warning button">Ver </a></td>                        
+                            <td>
+                                <div class="button-group" >
+                                    <a style="margin-right: 5px;" href = "{% url 'employee_app:employee_update' employee.id %}" class ="success button">Editar</a>
+                                    <a style="margin-right: 5px;" href = "{% url 'employee_app:employee_delete' employee.id %}" class ="alert button">Eliminar</a>
+                                </div>
+                            </td>                        
                         </tr>
                         {% endfor %}
                     </tbody>

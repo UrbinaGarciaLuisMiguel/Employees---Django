@@ -120,3 +120,10 @@ class EmployeeDelete(DeleteView):
     # When 'delete' it is sometimes necessary to confirm the deletion, for this reason a 'template_name' is silvered
     template_name = 'employees/delete.html'
     success_url = reverse_lazy('employee_app:employee_success')
+
+class EmployeesAdmin(ListView):
+    template_name = 'employees/list_all_admin.html'
+    model         = Employee
+    paginate_by   = 10
+    context_object_name = 'list_employees'
+
