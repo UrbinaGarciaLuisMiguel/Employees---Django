@@ -44,18 +44,6 @@ class ListByDepartment(ListView):
     # so I access it through the variable that I define in this field.
     context_object_name = 'list_employees_by_deparment'
 
-
-# """ List of employees by keyword """
-# class ListByKeyword(ListView):
-#     template_name       = 'employees/list_by_keyword.html'
-#     context_object_name = 'list_employees_by_keyword'
-# 
-#     def get_queryset(self):
-#         # Receives the 'keyword' from the URL
-#         keyword = self.request.GET.get("keyword", "") # Keyword is the value 'name' of the html element containing the 'keyword'
-#         list = Employee.objects.filter( first_name = keyword ) 
-#         return list
-
 """ List skills of an employee """
 class ListSkillsOfEmployee(ListView):
     template_name       = 'employees/list_skills.html'

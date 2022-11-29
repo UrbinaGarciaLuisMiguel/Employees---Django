@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    Todos los empleados
+    Todos los Departamentos
 {% endblock title %}
 
 {% block content %}
@@ -12,19 +12,19 @@
 
     <div class = "grid-container">
         <div class = "grid-x">
-            <h1 class = "cell">LISTA DE EMPLEADOS</h1>
+            <h1 class = "cell">LISTA DE DEPARTAMENTOS</h1>
 
-            <!-- start of employee finder -->
+            <!-- start of department finder -->
             <form method = "GET" class = "cell grid-x grid-margin-x">
                 {% csrf_token %}
                 <div class = "cell large-7">
-                    <input type="text" id = "keyword_id" name = "keyword" placeholder="Buscar empleado">
+                    <input type="text" id = "keyword_id" name = "keyword" placeholder="Buscar departamento">
                 </div>
                 <div class = "cell large-2">
                     <button type = "submit" class = "success button">Buscar</button>
                 </div>
             </form>
-            <!-- end of employee finder -->
+            <!-- end of department finder -->
 
             <!-- start of list table -->
             <div class="cell">
@@ -32,21 +32,17 @@
                     <thead>
                         <tr>
                             <th width="50">ID</th>
-                            <th width="100">NOMBRE</th>
-                            <th width="100">APELLIDOS</th>
-                            <th width="200">DEPARTAMENTO</th>
+                            <th width="100">DESCRIPCIÓN</th>
                             <th width="30">ACCIONES</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        {% for employee in list_employees %}
+                        {% for department in list_departments %}
                         <tr>
-                            <td>{{ employee.id }}</td>
-                            <td>{{ employee.first_name }}</td>
-                            <td>{{ employee.last_name }}</td>
-                            <td>{{ employee.department.name }}</td>
-                            <td> <a href = "{% url 'employee_app:employee_detail' employee.id %}" class ="warning button">Ver</a></td>                        
+                            <td>{{ department.id }}</td>
+                            <td>{{ department.name }}</td>
+                            <td> <a href = "{% url 'employee_app:employees_by_department' department.short_name %}" class ="warning button">Ver Empleados</a></td>                        
                         </tr>
                         {% endfor %}
                     </tbody>

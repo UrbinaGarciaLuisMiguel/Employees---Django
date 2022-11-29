@@ -16,7 +16,9 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+app_name = "department_app"
 
 urlpatterns = [
-    path('crear/', views.DepartmentCreate.as_view(), name = 'department_create'),
+    path('crear-departamento/', views.DepartmentCreate.as_view(), name = 'department_create'),
+    path('todos/', views.ListAllDepartment.as_view(), name = 'department_all'),
 ]

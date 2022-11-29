@@ -21,7 +21,6 @@ app_name = "employee_app"
 urlpatterns = [
     path('todos/', views.ListAllEmployees.as_view(), name = 'employees_all'),
     path('por-departamento/<department_short_name>/', views.ListByDepartment.as_view(), name = 'employees_by_department'),
-    # path('buscar-empleado/', views.ListByKeyword.as_view(), name = "employees_by_keyword"),
     path('habilidades-empleado/', views.ListSkillsOfEmployee.as_view(), name = 'employee_skills'),
     path('detalle-empleado/<pk>/', views.EmployeeDetail.as_view(), name = 'employee_detail'),
     path('registrar-empleado/', views.EmployeeCreate.as_view()),

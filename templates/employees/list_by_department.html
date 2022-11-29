@@ -1,7 +1,46 @@
-<h1>EMPLEADOS POR DEPARTAMENTO</h1>
+{% extends 'base.html' %}
 
-<ul>
-    {% for employee in  list_employees_by_deparment %}
-        <li>{{ employee }}</li>
-    {% endfor %}
-</ul>
+{% block title %}
+    Empleados por departamento
+{% endblock title %}
+
+{% block content %}
+
+    {% include "includes/header.html" %}
+
+    <div class = "grid-container">
+        <div class = "grid-x">
+            <h1 class = "cell">EMPLEADOS POR DEPARMANETO</h1>
+
+            <!-- start of list table -->
+            <div class="cell">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="50">ID</th>
+                            <th width="100">NOMBRE</th>
+                            <th width="100">APELLIDOS</th>
+                            <th width="200">DEPARTAMENTO</th>
+                            <th width="30">ACCIONES</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for employee in list_employees_by_deparment %}
+                        <tr>
+                            <td>{{ employee.id }}</td>
+                            <td>{{ employee.first_name }}</td>
+                            <td>{{ employee.last_name }}</td>
+                            <td>{{ employee.department.name }}</td>
+                            <td> <a href = "{% url 'employee_app:employee_detail' employee.id %}" class ="warning button">Ver</a></td>                        
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- end of list table -->
+
+        </div>
+    </div>
+    
+{% endblock content %}
