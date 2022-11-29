@@ -9,9 +9,12 @@
 
     {% include "includes/header.html" %}
 
+
     <div class = "grid-container">
         <div class = "grid-x">
             <h1 class = "cell">LISTA DE TODOS LOS EMPLEADOS</h1>
+
+            <!-- start of employee finder -->
             <form method = "GET" class = "cell grid-x grid-margin-x">
                 {% csrf_token %}
                 <div class = "cell large-7">
@@ -21,7 +24,9 @@
                     <button type = "submit" class = "success button">Buscar</button>
                 </div>
             </form>
+            <!-- end of employee finder -->
 
+            <!-- start of list table -->
             <div class="cell">
                 <table>
                     <thead>
@@ -47,6 +52,39 @@
                     </tbody>
                 </table>
             </div>
+            <!-- end of list table -->
+
+            <!-- start of pagination -->
+            <div class = "cell">
+                {% if is_paginated %}
+                    <nav aria-label="Pagination">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="pagination-previous">
+                                    <a href="?page={{ page_obj.previous_page_number }}">Atras</a>
+                                </li>
+                            {% endif %}
+                            
+                            {% for page in paginator.page_range %}
+
+                            {% if page == page_obj.number %}
+                                <li class="current"><span class="show-for-sr">You're on page</span>{{ page }}</li>    
+                            {% else %}
+                                <li><a href="?page={{ page }}">{{ page }}</a></li> 
+                            {% endif %}
+                                
+                            {% endfor %}
+                            
+                            {% if page_obj.has_next %}
+                                <li class="pagination-next">
+                                    <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+            <!-- end of pagination -->
         </div>
     </div>
     

@@ -10,6 +10,7 @@ class ListAllEmployees(ListView):
     # Name of the template associated with this view
     template_name = 'employees/list_all.html'
     model         = Employee
+    paginate_by   = 10 # genera objeto (page_obj) para manejar la paginación en el template
     # This type of view (ListView) manages the entire list of records in the model, 
     # so I access it through the variable that I define in this field.
     context_object_name = 'list_employees'
