@@ -85,8 +85,8 @@ class EmployeeCreate(CreateView):
     
     
     # I must indicate which URL to go to when the request is successfully completed
-    # success_url = '/employees/success' # Redirect to the same page
-    success_url   = reverse_lazy('employee_app:employee_success') 
+    # success_url = '/employees/todos' # Redirect to the same page
+    success_url   = reverse_lazy('employee_app:employees_all') 
 
 
     def form_valid(self, form):
@@ -99,8 +99,8 @@ class EmployeeCreate(CreateView):
 class EmployeeUpdate(UpdateView):
     template_name = 'employees/update.html'
     model         = Employee
-    fields = ["first_name","last_name","job","department","skills"]
-    success_url   = reverse_lazy('employee_app:employee_success')
+    fields        = ["first_name","last_name","job","department","skills"]
+    success_url   = reverse_lazy('employee_app:employees_all_admin')
 
 
     # def post(self, request, *args, **kwargs):
@@ -112,18 +112,18 @@ class EmployeeUpdate(UpdateView):
         employee = form.save(commit = False) # Creates instance as it will go to database, but doesn't waste memory on save
         employee.full_name = employee.first_name + " " + employee.last_name
         employee.save()
-        return super(EmployeeCreate, self).form_valid(form)
+        return super(EmployeeUpdate, self).form_valid(form)
 
 
 class EmployeeDelete(DeleteView):
     model = Employee
     # When 'delete' it is sometimes necessary to confirm the deletion, for this reason a 'template_name' is silvered
     template_name = 'employees/delete.html'
-    success_url = reverse_lazy('employee_app:employee_success')
+    success_url = reverse_lazy('employee_app:employees_all_admin')
 
 class EmployeesAdmin(ListView):
     template_name = 'employees/list_all_admin.html'
     model         = Employee
-    paginate_by   = 10
+    paginate_by   = 5
     context_object_name = 'list_employees'
 
