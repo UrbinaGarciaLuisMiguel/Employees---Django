@@ -1,7 +1,54 @@
-<h1>LISTA DE TODOS LOS EMPLEADOS</h1>
+{% extends 'base.html' %}
 
-<ul>
-    {% for employee in  list_employees %}
-        <li>{{ employee }}</li>
-    {% endfor %}
-</ul>
+
+{% block title %}
+    Todos los empleados
+{% endblock title %}
+
+{% block content %}
+
+    {% include "includes/header.html" %}
+
+    <div class = "grid-container">
+        <div class = "grid-x">
+            <h1 class = "cell">LISTA DE TODOS LOS EMPLEADOS</h1>
+            <form method = "GET" class = "cell grid-x grid-margin-x">
+                {% csrf_token %}
+                <div class = "cell large-7">
+                    <input type="text" id = "keyword_id" name = "keyword" placeholder="Buscar empleado">
+                </div>
+                <div class = "cell large-2">
+                    <button type = "submit" class = "success button">Buscar</button>
+                </div>
+            </form>
+
+            <div class="cell">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="50">ID</th>
+                            <th width="100">NOMBRE</th>
+                            <th width="100">APELLIDOS</th>
+                            <th width="200">DEPARTAMENTO</th>
+                            <th width="30">ACCIONES</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for employee in list_employees %}
+                        <tr>
+                            <td>{{ employee.id }}</td>
+                            <td>{{ employee.first_name }}</td>
+                            <td>{{ employee.last_name }}</td>
+                            <td>{{ employee.department.name }}</td>
+                            <td> <a href = "{% url 'employee_app:employee_detail' employee.id %}" class ="warning button">Ver</a></td>                        
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+

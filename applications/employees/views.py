@@ -14,6 +14,17 @@ class ListAllEmployees(ListView):
     # so I access it through the variable that I define in this field.
     context_object_name = 'list_employees'
 
+    def get_queryset(self):
+        # Receives the 'keyword' from the URL
+        keyword = self.request.GET.get("keyword", "") # Keyword is the value 'name' of the html element containing the 'keyword'
+        
+        # <attribute_name>__icontains, filter the search with minimal matches
+        # Ex: In an array "Paralelepipedo, Paral", where keyword = 'Paral'
+        # would return the two words; but if the filtering were only "full_name" (Not full_name__icontains)
+        # would only return word 2 ('Paral')
+        list = Employee.objects.filter( full_name__icontains = keyword ) 
+        return list
+
 
 """ List all employees belonging to a company department """
 class ListByDepartment(ListView):
@@ -33,16 +44,16 @@ class ListByDepartment(ListView):
     context_object_name = 'list_employees_by_deparment'
 
 
-""" List of employees by keyword """
-class ListByKeyword(ListView):
-    template_name       = 'employees/list_by_keyword.html'
-    context_object_name = 'list_employees_by_keyword'
-
-    def get_queryset(self):
-        # Receives the 'keyword' from the URL
-        keyword = self.request.GET.get("keyword", "") # Keyword is the value 'name' of the html element containing the 'keyword'
-        list = Employee.objects.filter( first_name = keyword ) 
-        return list
+# """ List of employees by keyword """
+# class ListByKeyword(ListView):
+#     template_name       = 'employees/list_by_keyword.html'
+#     context_object_name = 'list_employees_by_keyword'
+# 
+#     def get_queryset(self):
+#         # Receives the 'keyword' from the URL
+#         keyword = self.request.GET.get("keyword", "") # Keyword is the value 'name' of the html element containing the 'keyword'
+#         list = Employee.objects.filter( first_name = keyword ) 
+#         return list
 
 """ List skills of an employee """
 class ListSkillsOfEmployee(ListView):
