@@ -1,16 +1,55 @@
-<h1>CREAR DEPARTAMENTO</h1>
+{% extends 'base.html' %}
 
-<form method="POST">
-    {% csrf_token %}
 
-    <h3>Datos del Empleado</h3>
-    <p> {{ form.first_name }}</p>
-    <p> {{ form.last_name }}</p>
+{% block title %}
+    Todos los Departamentos
+{% endblock title %}
 
-    <h3>Datos del Departamento</h3>
-    <p> {{ form.name }}</p>
-    <p> {{ form.short_name }}</p>
+{% block content %}
 
-    <button type = "submit">Guardar</button>
+    {% include "includes/header.html" %}
 
-</form>
+
+    <div class = "grid-container">
+        <div class = "grid-x">
+            <h1 class = "cell">CREAR DEPARTAMENTO</h1>
+
+            <form class = "cell callout grid-x grid-margin-x" method="POST">
+                {% csrf_token %}
+
+                <h3 class = "medium-12">Datos del Departamento</h3>
+                    
+                <div class="medium-6 cell">
+                    <label>Nombre: 
+                        {{ form.name }}
+                    </label>
+                </div>
+
+                <div class="medium-6 cell">
+                    <label>Nombre corto: 
+                        {{ form.short_name }}
+                    </label>
+                </div>
+                
+                
+                <h3 class = "medium-12">Datos del Empleado</h3>
+                <div class="medium-6 cell">
+                    <label>Nombres: 
+                        {{ form.first_name }}
+                    </label>
+                </div>
+
+                <div class="medium-6 cell">
+                    <label>Apellidos: 
+                        {{ form.last_name }}
+                    </label>
+                </div>
+
+                <div class="medium-12 cell">
+                    <button type = "submit"  class = "button">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+{%  endblock content %}
