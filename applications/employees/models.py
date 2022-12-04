@@ -32,7 +32,7 @@ class Employee(models.Model):
     first_name = models.CharField("Nombre", max_length = 50)
     last_name  = models.CharField("Apellido", max_length = 50)
     full_name  = models.CharField("Nombre Completo", max_length = 100)
-    # avatar    = models.ImageField("Imagen", upload_to = None, height_field = None, width_field = None) 
+    avatar     = models.ImageField(upload_to = 'employees', blank = True, null = True) 
     job        = models.CharField("Cargo", max_length  = 1, choices = JOB_CHOICES)
     
     # Foreign keys

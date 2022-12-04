@@ -24,8 +24,7 @@ urlpatterns = [
     path('por-departamento/<department_short_name>/', views.ListByDepartment.as_view(), name = 'employees_by_department'),
     path('habilidades-empleado/', views.ListSkillsOfEmployee.as_view(), name = 'employee_skills'),
     path('detalle-empleado/<pk>/', views.EmployeeDetail.as_view(), name = 'employee_detail'),
-    path('registrar-empleado/', views.EmployeeCreate.as_view()),
-    path('success/', views.CreateSuccess.as_view(), name = 'employee_success'),
+    path('registrar-empleado/', views.EmployeeCreate.as_view(), name = "employee_create"),
     path('editar-empleado/<pk>/', views.EmployeeUpdate.as_view(), name = 'employee_update'),
     path('eliminar-empleado/<pk>/', views.EmployeeDelete.as_view(), name = 'employee_delete')
 ]

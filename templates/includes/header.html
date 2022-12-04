@@ -3,17 +3,17 @@
     <!-- Menú de barra de navegación  -->
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li><a class="menu-text" href="{% url 'index' %}">Empleados</a></li>
-        <li><a href="{% url 'employee_app:employees_all' %}">Listar</a></li>
-        <li><a href="{% url 'department_app:department_all' %}">Departamentos</a></li>
-        <li><a href="{% url 'employee_app:employees_all_admin' %}">Administrar</a></li>
+        <li><a class="menu-text" href="{% url 'index' %}">EmpleaDos</a></li>
+        <li><a href="{% url 'employee_app:employees_all' %}">LISTAR</a></li>
+        <li><a href="{% url 'department_app:department_all' %}">DEPARTAMENTOS</a></li>
+        <li><a href="{% url 'employee_app:employees_all_admin' %}">ADMINISTRAR</a></li>
       </ul>
     </div>
     
     <div class="top-bar-right">
       <ul class="menu">
-        <li><input  type="search" placeholder="Buscar empleado ..."></li>
-        <li><button type="button" class="button">Buscar</button></li>
+        <!-- <li><input  type="search" placeholder="Buscar empleado ..."></li> -->
+        <li><a href="{% url 'employee_app:employee_create' %}" class = "button">Registrar</a></li>
       </ul>
     </div>
 </div>

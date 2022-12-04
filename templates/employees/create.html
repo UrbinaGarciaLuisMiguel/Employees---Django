@@ -14,7 +14,7 @@
         </div>
 
         <div class = "cell">
-            <form class = "grid-x grid-margin-x" action="" method="POST">
+            <form class = "grid-x grid-margin-x" action="" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <div class="cell large-6">
@@ -41,9 +41,16 @@
                     </label>
                 </div>
 
-                <div class="cell large-6">
+                <div class="cell large-12">
                     <label>Habilidades:
                         {{ form.skills }}
+                    </label>
+                </div>
+
+                
+                <div class="cell large-6">
+                    <label>Foto:
+                        {{ form.avatar }}
                     </label>
                 </div>
 

@@ -6,7 +6,7 @@ class EmployeeForm(forms.ModelForm):
     class Meta:
         model  = Employee
         # fields = ('__all__')
-        fields = ["first_name","last_name","job","department","skills",]
+        fields = ["first_name","last_name","avatar", "job","department","skills",]
 
         # I can access and modify the html attributes from the 'widgets' context variable
         widgets = {
