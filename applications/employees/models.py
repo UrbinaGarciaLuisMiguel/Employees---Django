@@ -14,7 +14,7 @@ class Skills(models.Model):
         verbose_name_plural = "Skills"
 
     def __str__(self):
-         return '(' + str(self.id) + ') ' + self.skill
+         return self.skill
 
 
 # Model for table 'Employees'

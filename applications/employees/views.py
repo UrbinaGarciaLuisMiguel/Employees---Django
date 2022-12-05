@@ -68,7 +68,7 @@ class EmployeeCreate(CreateView):
     
     # Extra field queredio in the 'CreateView', referred to the model attributes
     # fields        = ('__all__')
-    fields = ["first_name","last_name","job","department","skills", "avatar"] # The 'fields' decorator handles a default variable
+    # fields = ["first_name","last_name","job","department","skills", "avatar"] # The 'fields' decorator handles a default variable
     #                                                                 # called 'form' referring to the fields indicated in 
     #                                                                 # its declaration. it can be accessed in the .html 
     #                                                                 # template
@@ -76,7 +76,7 @@ class EmployeeCreate(CreateView):
 
     # If I use 'ModelForm' to be able to manipulate the fields of the form, 
     # it is allowed to replace 'fields' with 'form_call'
-    # form_class =  EmployeeForm
+    form_class =  EmployeeForm
     
     
     # I must indicate which URL to go to when the request is successfully completed

@@ -1,8 +1,42 @@
-<h1>DETALLES DE EMPLEADO</h1>
+{% extends 'base.html' %}
+{% load static %}
 
-<h3>Todos los datos:</h3>
-<p>{{ object_detail.first_name }}</p>
-<p>{{ object_detail.last_name }}</p>
-<p>{{ object_detail.job }}</p>
-<p>{{ object_detail.department }}</p>
-<p>{{ object_detail.skills }}</p>
+{% block title %}
+    {{ object_detail.full_name }}
+{% endblock title %}
+
+{% block content %}
+
+    {% include "includes/header.html" %}
+
+    <div class = "grid-container">
+        <div class = "grid-x grid-margin-x align-center">
+            <div class="cell large-6 card" style="width: 500px; margin-top: 10px;">
+                <div class="card-divider">
+                  {{ object_detail.get_job_display }}  <!-- cuando la propiedad en un choices en el modelo -->
+                </div>
+
+                {% if object_detail.avatar %}
+                    <img src="{{ object_detail.avatar.url }}">
+                {% else %}
+                    <img src="{% static 'images/avatar_default.png' %}">
+                {% endif %}
+                
+                <div class="card-section">
+                    <h4>{{ object_detail.full_name }}</h4>
+                    <p>{{ object_detail.first_name }}</p>
+                    <p>{{ object_detail.department.short_name }}</p>
+                    <p><span class = "label">Habilidades:</span></p>
+                    <ul class = "vertical menu">
+                        {% for skill in object_detail.skills.all %}
+                            <li>{{ skill.skill }}</li>
+                        {% endfor %}
+                    </ul>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
